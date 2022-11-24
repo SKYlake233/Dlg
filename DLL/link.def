@@ -1,0 +1,6 @@
+LIBRARY LINK
+EXPORTS
+Add @1
+Substract @2
+getData @3
+setData @4
