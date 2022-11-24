@@ -218,11 +218,11 @@ void CDlgDlg::OnBnClickedButtonSend()
 		MessageBox(L"打开动态链接库失败", MB_OK);
 	}
 	typedef int(__stdcall* PROC)(int);
-	mutexObj.Lock();
 	PROC proc = (PROC)GetProcAddress(hdll, "setData");
-	mutexObj.Unlock();
 	UpdateData(true);
+	mutexObj.Lock();
 	(*proc)(result);
+	mutexObj.Unlock();
 	event.PulseEvent();
 	UpdateData(false);
 	FreeLibrary(hdll);
